@@ -1,4 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
+ workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     # A pull request needs to be approved, before Frogbot scans it. Any GitHub user who is associated with the
     # "frogbot" GitHub environment can approve the pull request to be scanned.
-    environment: frogbot
+    environment: artificatory
     steps:
       - uses: actions/checkout@v2
         with:
@@ -43,26 +43,26 @@ jobs:
       # The full template list with the required GitHub Actions can be found at https://github.com/jfrog/frogbot/tree/master/templates/github-actions/scan-pull-request
 
       - uses: jfrog/frogbot@9304d3b1d8e05a1b5fc0ba9ebf9ffbd495386250
-        env: artificatory
+        env: 
           # [Mandatory]
           # JFrog platform URL (This functionality requires version 3.29.0 or above of Xray)
-        JF_URL: ${{ secrets.JF_URL }}
+          JF_URL: ${{ secrets.JF_URL }}
 
           # [Mandatory if JF_ACCESS_TOKEN is not provided]
           # JFrog username with 'read' permissions for Xray. Must be provided with JF_PASSWORD
-        JF_USER: ${{ secrets.JF_USER }}
+          JF_USER: ${{ secrets.JF_USER }}
 
           # [Mandatory if JF_ACCESS_TOKEN is not provided]
           # JFrog password. Must be provided with JF_USER
-        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+          JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
           # [Mandatory]
           # The GitHub token automatically generated for the job
-        JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # [Mandatory if JF_USER and JF_PASSWORD are not provided]
           # JFrog access token with 'read' permissions on Xray service
-        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
           # [Mandatory when using npm]
           # The command that installs the dependencies
